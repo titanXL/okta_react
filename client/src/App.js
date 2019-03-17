@@ -7,7 +7,7 @@ import Users from "./Users";
 const config = {
   issuer: "https://dev-464496.okta.com/oauth2/default",
   redirect_uri: window.location.origin + "/implicit/callback",
-  client_id: "0oad45f9yb3qknHIh356"
+  client_id: process.env.REACT_APP_NOT_SECRET_CODE
 };
 
 class App extends Component {

@@ -1,6 +1,7 @@
 const express = require("express");
 const OktaJwtVerifier = require("@okta/jwt-verifier");
 var cors = require("cors");
+const morgan = require("morgan");
 const users = [
   {
     id: 1,
@@ -14,7 +15,7 @@ const users = [
 
 const oktaJwtVerifier = new OktaJwtVerifier({
   issuer: "https://dev-464496.okta.com/oauth2/default",
-  clientId: "0oad45f9yb3qknHIh356",
+  clientId: process.env.clientId,
   assertClaims: {
     aud: "api://default"
   }
@@ -52,6 +53,7 @@ const app = express();
  * For local testing only!  Enables CORS for all domains
  */
 app.use(cors());
+app.use(morgan("dev"));
 
 /**
  * An example route that requires a valid access token for authentication, it
